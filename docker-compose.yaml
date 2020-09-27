@@ -28,6 +28,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+      KAFKA_CREATE_TOPICS: "tweets:1:1,tweets_test:1:1"
 
 
   schema-registry:
