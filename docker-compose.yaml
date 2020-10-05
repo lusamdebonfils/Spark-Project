@@ -31,18 +31,9 @@ services:
       KAFKA_CREATE_TOPICS: "tweets:1:1,tweets_test:1:1"
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-
-
-  schema-registry:
-    image: confluentinc/cp-schema-registry:5.5.0
-    hostname: schema-registry
-    container_name: schema-registry
-    depends_on:
-      - zookeeper
-      - broker
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
-      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: WARN
+  kafka-tools:
+    image: confluentinc/cp-kafka:5.4.0
+    hostname: kafka
+    container_name: kafka
+    command: ["tail", "-f", "/dev/null"]
+    network_mode: "host"
